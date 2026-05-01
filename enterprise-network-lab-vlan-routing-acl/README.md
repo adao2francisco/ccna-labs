@@ -18,7 +18,7 @@ The goal is to demonstrate practical networking skills aligned with real-world s
 
 ---
 
-## 🏗️ Network Topology
+## Network Topology
 
 <img width="729" height="417" alt="Enterprise-network-lab-vlan-routing-acl" src="https://github.com/user-attachments/assets/95191061-b007-4d3a-bab4-02adc785a082" />
 
