@@ -1,0 +1,57 @@
+! ================================
+! Switch S1 Configuration
+! ================================
+
+hostname S1
+ip domain-name cisco.com
+username Adao privilege 15 secret Cisco
+
+vlan 10
+ name RH
+
+vlan 20
+ name IT
+
+vlan 30
+ name GUEST
+
+vlan 99
+ name MANAGEMENT
+
+interface FastEthernet0/1
+ switchport mode access
+ switchport access vlan 10
+ description PC - RH
+
+interface FastEthernet0/2
+ switchport mode access
+ switchport access vlan 20
+ description PC - IT
+
+interface FastEthernet0/3
+ switchport mode access
+ switchport access vlan 30
+ description PC - GUEST
+
+interface GigabitEthernet0/2
+ switchport mode trunk
+ switchport trunk native vlan 999
+ switchport trunk allowed vlan 10,20,30,99
+ description Trunk to R1
+
+interface Vlan99
+ ip address 192.168.99.2 255.255.255.0
+ no shutdown
+
+ip default-gateway 192.168.99.1
+
+banner motd ^C Unauthorized access is prohibited ^C
+
+
+line vty 0 4
+ login local
+ transport input ssh
+
+! ================================
+! End
+! ================================

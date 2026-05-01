@@ -1,0 +1,70 @@
+! ================================
+! Router R1 Configuration
+! ================================
+
+hostname R1
+
+! DHCP Configuration
+ip dhcp excluded-address 192.168.10.1 192.168.10.10
+ip dhcp excluded-address 192.168.20.1 192.168.20.10
+ip dhcp excluded-address 192.168.30.1 192.168.30.10
+
+ip dhcp pool RH
+ network 192.168.10.0 255.255.255.0
+ default-router 192.168.10.1
+ domain-name cisco.com
+
+ip dhcp pool TI
+ network 192.168.20.0 255.255.255.0
+ default-router 192.168.20.1
+ domain-name cisco.com
+
+ip dhcp pool GUEST
+ network 192.168.30.0 255.255.255.0
+ default-router 192.168.30.1
+ domain-name cisco.com
+
+! User for SSH
+username Adao privilege 15 secret Cisco
+
+ip domain-name cisco.com
+
+
+interface GigabitEthernet0/0
+ no ip address
+ no shutdown
+
+interface GigabitEthernet0/0.10
+ encapsulation dot1Q 10
+ ip address 192.168.10.1 255.255.255.0
+ description VLAN 10 - RH
+
+interface GigabitEthernet0/0.20
+ encapsulation dot1Q 20
+ ip address 192.168.20.1 255.255.255.0
+ description VLAN 20 - IT
+
+interface GigabitEthernet0/0.30
+ encapsulation dot1Q 30
+ ip address 192.168.30.1 255.255.255.0
+ ip access-group 100 in
+ description VLAN 30 - GUEST
+
+interface GigabitEthernet0/0.99
+ encapsulation dot1Q 99
+ ip address 192.168.99.1 255.255.255.0
+ description Management VLAN
+
+access-list 100 deny ip 192.168.30.0 0.0.0.255 192.168.20.0 0.0.0.255
+access-list 100 permit ip any any
+
+
+crypto key generate rsa
+!
+line vty 0 4
+ login local
+ transport input ssh
+
+! ================================
+! End
+! ================================
