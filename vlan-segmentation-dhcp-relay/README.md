@@ -52,7 +52,8 @@ ip helper-address
 
 # Topologia
 
-![Topology](topology.png)
+![Topology] <img width="659" height="426" alt="topologia" src="https://github.com/user-attachments/assets/67b62dba-8fbd-4db0-85ed-1664ebedda83" />
+
 
 ---
 
