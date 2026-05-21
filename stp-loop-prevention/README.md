@@ -130,7 +130,7 @@ Isso significa que:
 - diferentes VLANs podem possuir caminhos distintos
 - uma interface pode estar em forwarding para uma VLAN e blocking para outra
 
-No Cisco Packet Tracer, a representação visual pode mostrar a porta totalmente em laranja mesmo quando apenas uma VLAN está em estado blocking.
+No Cisco Packet Tracer, a representação visual pode mostrar a porta totalmente em verdes mesmo quando apenas uma VLAN está em estado blocking.
 
 # Autor
 
