@@ -53,12 +53,8 @@ A causa identificada foi um loop Layer 2.
 
 # Topologia Inicial
 
-```text
-        S1
-       /  \
-      /    \
-    S2------S3
-```
+<img width="473" height="334" alt="topologia" src="https://github.com/user-attachments/assets/f5c69ee5-77f3-4b0d-9725-2adad9480ec5" />
+
 
 
 
