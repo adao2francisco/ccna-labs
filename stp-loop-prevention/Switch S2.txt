@@ -1,0 +1,40 @@
+! Switch S2
+! Configuracao Base + STP
+
+hostname S2
+no ip domain-lookup
+service password-encryption
+enable secret cisco123
+banner motd # Acesso restrito apenas a pessoal autorizado #
+
+spanning-tree mode pvst
+spanning-tree extend system-id
+
+vlan 10
+ name USERS
+
+vlan 20
+ name SERVERS
+
+interface GigabitEthernet0/1
+ switchport mode trunk
+ description LINK TO S1
+
+interface GigabitEthernet0/2
+ switchport mode trunk
+ description LINK TO S3
+
+
+! Interfaces Nao Utilizadas
+
+interface range FastEthernet0/10 - 24
+ shutdown
+ description UNUSED PORT
+
+line con 0
+ password cisco
+ login
+
+line vty 0 4
+ password cisco
+ login
